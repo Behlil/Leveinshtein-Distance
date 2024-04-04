@@ -9,7 +9,7 @@
 using namespace std;
 
 // Calculate Levenshtein distance with early stopping
-size_t levenshtein_dp(const std::string& s1, const std::string& s2, size_t threshold) {
+size_t  levenshtein_dp(const std::string& s1, const std::string& s2, size_t threshold){
     const size_t n = s1.size();
     const size_t m = s2.size();
 
