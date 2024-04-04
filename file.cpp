@@ -39,56 +39,13 @@ size_t levenshtein_dp(const std::string& s1, const std::string& s2, size_t thres
 }
 
 int main() {
-    ifstream file("data_concatenated.csv");
-    if (!file.is_open()) {
-        cout << "Failed to open the file." << endl;
-        return 1;
-    }
-
-    string line;
-    getline(file, line); // Skip header line
-
-    vector<string> concatenated_cols;
-
-    // Read concatenated_col values into a vector
-    while (getline(file, line)) {
-        stringstream ss(line);
-        string ctm_cta_id, concatenated_col;
-        getline(ss, ctm_cta_id, ',');
-        getline(ss, concatenated_col, ',');
-        concatenated_cols.push_back(concatenated_col);
-    }
-
-    file.close();
-
-    // Open a new file to write the results
-    ofstream output_file("distances_1.csv");
-    if (!output_file.is_open()) {
-        cout << "Failed to open the output file." << endl;
-        return 1;
-    }
-
-    // Calculate Levenshtein distance for each pair of concatenated_col values in parallel
-    output_file << "Pair,Levenshtein distance" << endl;
-
-
-
-#pragma omp parallel for schedule(guided) num_threads(4)
-    for (size_t i = 0; i < concatenated_cols.size(); ++i) {
-        for (size_t j = i + 1; j < concatenated_cols.size(); ++j) {
-            size_t distance = levenshtein_dp(concatenated_cols[i], concatenated_cols[j], 5);
-            if (distance <= 5) {
-#pragma omp critical
-                {
-                    output_file << "(" << i << "," << j << ")," << distance << endl;
-                }
-            }
-            
-            
-        }
-    }
-
-    output_file.close();
+    // test the function
+    std::string s1 = "kitten";
+    std::string s2 = "sitting";
+    size_t threshold = 3;
+    size_t dist = levenshtein_dp(s1, s2, threshold);
+    std::cout << "Distance: " << dist << std::endl;
+    
 
     return 0;
 }
