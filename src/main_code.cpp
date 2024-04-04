@@ -1,15 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include <string>
 #include <vector>
 #include <algorithm>
-#include <chrono>
-#include <omp.h>
+#include <cassert>
 
-using namespace std;
 
-// Calculate Levenshtein distance with early stopping
-size_t  levenshtein_dp(const std::string& s1, const std::string& s2, size_t threshold){
+size_t levenshtein_dp(const std::string& s1, const std::string& s2) {
     const size_t n = s1.size();
     const size_t m = s2.size();
 
@@ -27,14 +22,8 @@ size_t  levenshtein_dp(const std::string& s1, const std::string& s2, size_t thre
             curr_row.push_back(std::min({ curr_row.back() + 1, prev_row[j] + 1, prev_row[j - 1] + cost }));
         }
 
-        // Check if the minimum distance exceeds the threshold
-        size_t min_dist = *std::min_element(curr_row.begin(), curr_row.end());
-        if (min_dist > threshold)
-            return 10;  // Set distance to 10 if it exceeds the threshold
-
         prev_row = std::move(curr_row);
     }
 
     return prev_row.back();
 }
-
