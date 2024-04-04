@@ -1,6 +1,12 @@
-name: CI
+name: C/C++ CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -10,9 +16,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y g++ make
+    - name: Set up C++ environment
+      uses: actions/setup-cpp@v2
+      with:
+        compiler: gcc
 
-    - name: Build and run tests
-      run: |
-        make test
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y make
+
+    - name: Build and test
+      run: make test
