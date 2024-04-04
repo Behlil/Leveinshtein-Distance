@@ -32,6 +32,14 @@ The implementation is done in C++ for efficiency and performance. It uses dynami
 3. Compile the code using a C++ compiler.
 4. Run the executable, providing two strings as arguments.
 
+
+
+You can use the following code snippet as a starting point for your tests:
+## Tests
+
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/Behlil/Leveinshtein-Distance)
+
+
 ## Contributing
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/behlil/Leveinshtein-Dtstance/pulls)
 
