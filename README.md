@@ -21,7 +21,6 @@ The Levenshtein Distance algorithm with early stopping is as follows:
 
 4. After all characters have been processed, `d[n][m]` will hold the Levenshtein distance between the two strings.
 
-Please note that this algorithm assumes that the strings are indexed from `1` to `n` or `m`. In most programming languages, strings are indexed from `0`, so you may need to adjust the indices accordingly.
 
 ## Implementation Details
 The implementation is done in C++ for efficiency and performance. It uses dynamic programming to solve the problem in O(nm) time where n and m are the lengths of the two input strings.
@@ -32,9 +31,6 @@ The implementation is done in C++ for efficiency and performance. It uses dynami
 3. Compile the code using a C++ compiler.
 4. Run the executable, providing two strings as arguments.
 
-
-
-You can use the following code snippet as a starting point for your tests:
 ## Tests
 
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/Behlil/Leveinshtein-Distance)
