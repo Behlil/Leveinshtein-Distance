@@ -38,14 +38,3 @@ size_t levenshtein_dp(const std::string& s1, const std::string& s2, size_t thres
     return prev_row.back();
 }
 
-int main() {
-    // test the function
-    std::string s1 = "kitten";
-    std::string s2 = "sitting";
-    size_t threshold = 3;
-    size_t dist = levenshtein_dp(s1, s2, threshold);
-    std::cout << "Distance: " << dist << std::endl;
-    
-
-    return 0;
-}
